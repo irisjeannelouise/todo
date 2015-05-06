@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'shotgun'
 require 'data_mapper'
+require './environments'
 
 
 
@@ -14,22 +15,18 @@ require 'data_mapper'
       end
     DataMapper.finalize.auto_upgrade!
 
- get '/' do
- "HELLO WORLD"
- end 
-
-get '/todolist' do 
+get '/' do 
   @items = Item.all(:order => :created.desc)
   erb :todolist
 end
   
 post '/todolist' do
   Item.create(:content => params[:content], :created =>Time.now)
-  redirect '/todolist'
+  redirect '/'
 end
 
 get '/delete/:id' do
   item = Item.first(:id => params[:id])
   item.destroy
-  redirect '/todolist'
+  redirect '/'
 end

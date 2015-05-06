@@ -1,11 +1,26 @@
 
     <style type="text/css">
     * {
-      font-family: Arial; font-size: 16px; margin-left: 40px; margin-top:20px; background-color: #CCFFCC; text-decoration: none; 
-      padding: 0px;
+      font-family: Arial; font-size: 14px; margin-left: 50px; 
+      margin-top:25px; background-color: #CCFFCC; text-decoration: none; 
+      list-style-type:none; padding: 0px;
+    }
+    h1{
+     font-size : 25px; 
+     text-decoration: underline;
+     margin-top:-20px;
+     margin-left: -75px;
+    }
+
+    form{
+
+      margin-left: 100px;
     }
     </style>
 
+
+    <h1>to do / not to do :</h1>
+    
     <ul id="todo-list" class="unstyled">
       <% @items.each do |item| %>
       <li id="<%= item[:id] %>">
@@ -14,16 +29,15 @@
       </span>
       <span class="pull-right">
     
-      <a href="/delete/<%= item[:id] %>" class="btn btn-danger">Delete</a>
+      <a href="/delete/<%= item[:id] %>" class="btn btn-danger">Non</a>
       </span>
       </li>
       <% end %>
     </ul>
 
-
     <form action="/todolist" class="form-inline" method="POST">
-      <input type="text" placeholder="Todo item" name="content">
-      <button type="submit" class="btn">Post</button>
+      <input type="text" placeholder="to do item :" name="content">
+      <button type="submit" class="btn">Post!</button>
     </form>
 
 
